@@ -1,7 +1,7 @@
 [Unit]
 Description=Paperless-ngx container
-Wants=network-online.target container-paperless-valkey.service
-After=network-online.target container-paperless-valkey.service
+Wants=network-online.target valkey.service
+After=network-online.target valkey.service
 
 [Container]
 ContainerName=paperless

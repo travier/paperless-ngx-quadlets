@@ -4,7 +4,7 @@ Wants=network-online.target
 After=network-online.target
 
 [Container]
-ContainerName=paperless-valkey
+ContainerName=valkey
 DropCapability=all
 NoNewPrivileges=true
 User=1000
