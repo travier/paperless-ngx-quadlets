@@ -24,4 +24,4 @@ For the full documentation for Quadlet support in Podman, see
 
 ## License
 
-[MIT][LICENSE] or [CC0](https://creativecommons.org/public-domain/cc0/).
+[MIT](./LICENSE) or [CC0](https://creativecommons.org/public-domain/cc0/).
