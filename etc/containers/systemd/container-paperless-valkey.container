@@ -1,0 +1,24 @@
+[Unit]
+Description=Valkey for Paperless-ngx container
+Wants=network-online.target
+After=network-online.target
+
+[Container]
+ContainerName=paperless-valkey
+DropCapability=all
+NoNewPrivileges=true
+User=1000
+Group=1000
+Image=docker.io/valkey/valkey:7.2
+ReadOnly=true
+Volume=/var/srv/paperless/valkey:/data:rw,z
+AutoUpdate=registry
+Network=paperless.network
+IP=10.89.1.20
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target

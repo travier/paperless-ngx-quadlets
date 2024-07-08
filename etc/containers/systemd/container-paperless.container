@@ -1,0 +1,31 @@
+[Unit]
+Description=Paperless-ngx container
+Wants=network-online.target container-paperless-valkey.service
+After=network-online.target container-paperless-valkey.service
+
+[Container]
+ContainerName=paperless
+DropCapability=all
+NoNewPrivileges=true
+Image=ghcr.io/paperless-ngx/paperless-ngx:latest
+User=1000
+Group=1000
+ReadOnly=true
+Tmpfs=/tmp:rw,mode=1777
+Volume=/var/srv/paperless/data:/usr/src/paperless/data:rw,z
+Volume=/var/srv/paperless/media:/usr/src/paperless/media:rw,z
+Volume=/var/srv/paperless/export:/usr/src/paperless/export:rw,z
+Volume=/var/srv/paperless/consume:/usr/src/paperless/consume:rw,z
+AutoUpdate=registry
+Network=paperless.network
+IP=10.89.1.30
+EnvironmentFile=/var/srv/paperless/env
+Environment=PAPERLESS_REDIS=redis://10.89.1.20:6379
+Environment=PAPERLESS_SUPERVISORD_WORKING_DIR=/tmp
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
